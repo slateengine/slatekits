@@ -1,0 +1,86 @@
+// ======================================================================
+// Slate Framework <hello@slateengine.com>
+// ======================================================================
+//
+// ======================================================================
+// Slate Forms: Valid Helpers
+// ======================================================================
+
+/// Built-in presentational styles for required elements. Set $form-validation-classes-toggle to false to use HTML5 validation instead.
+/// @example scss - Validation
+/// .form {
+///     @include validation;
+/// }
+/// @author Hash&Salt
+/// @param {Variable} $valid-classes [$form-validation-classes-toggle] - Toggle validation classes.
+/// @group Validation
+@mixin validation($map-name: $input-skin) {
+  @if map-deep-get($map-name, 'validation', 'use-classes') == true {
+    // Valid
+    .#{map-deep-get($map-name, 'validation', 'valid-class')} {
+      color: map-deep-get($map-name, 'validation', 'valid-color');
+    }
+    // Invalid
+    .#{map-deep-get($map-name, 'validation', 'invalid-class')} {
+      color: map-deep-get($map-name, 'validation', 'invalid-color');
+    }
+    // Required
+    .#{map-deep-get($map-name, 'validation', 'required-class')} {
+      color: map-deep-get($map-name, 'validation', 'required-color');
+    }
+    // Classes for required Inputs
+    @include inputs-all {
+      // Valid
+      &.#{map-deep-get($map-name, 'validation', 'valid-class')} {
+        border-color: map-deep-get($map-name, 'validation', 'valid-input-border-color');
+        color: map-deep-get($map-name, 'validation', 'valid-color');
+
+        &:focus {
+          border-color: map-deep-get($map-name, 'validation', 'valid-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'valid-color');
+        }
+      }
+      // Invalid
+      &.#{map-deep-get($map-name, 'validation', 'invalid-class')} {
+        border-color: map-deep-get($map-name, 'validation', 'invalid-input-border-color');
+        color: map-deep-get($map-name, 'validation', 'invalid-color');
+
+        &:focus {
+          border-color: map-deep-get($map-name, 'validation', 'invalid-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'invalid-color');
+        }
+      }
+      // Required
+      &.#{map-deep-get($map-name, 'validation', 'required-class')} {
+        border-color: map-deep-get($map-name, 'validation', 'required-input-border-color');
+        color: map-deep-get($map-name, 'validation', 'required-color');
+
+        &:focus {
+          border-color: map-deep-get($map-name, 'validation', 'required-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'required-color');
+        }
+      }
+    }
+  } @else {
+    // HTML 5 for Required Inputs
+    @include inputs-all {
+      &:focus {
+        // Required
+        &:required {
+          border-color: map-deep-get($map-name, 'validation', 'required-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'required-color');
+        }
+        // Valid
+        &:valid {
+          border-color: map-deep-get($map-name, 'validation', 'valid-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'valid-color');
+        }
+        // Invalid
+        &:invalid {
+          border-color: map-deep-get($map-name, 'validation', 'invalid-input-border-color');
+          color: map-deep-get($map-name, 'validation', 'invalid-color');
+        }
+      }
+    }
+  }
+}

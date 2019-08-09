@@ -1,0 +1,8 @@
+{
+  "name": "slatesasskits",
+  "version": "8.0.0",
+  "description": "Extensions for the Slate sass framework",
+  "main": "_slatekits.scss",
+  "author": "Hash&Salt",
+  "license": "MIT"
+}

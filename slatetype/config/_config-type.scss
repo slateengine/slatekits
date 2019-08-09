@@ -1,0 +1,142 @@
+// ======================================================================
+// Slate Type Config | hello@hashandsalt.com
+// ======================================================================
+
+/// Basic Setup
+/// ======================================================================
+
+/// Enable Type Debug
+/// @group Debug
+$type-debug: true !default;
+
+// Basic Setup
+// ======================================================================
+
+/// Set Global Font size
+/// @group Typography
+$base-font-size: $rem-base !default;
+
+/// Set Global Line height
+/// @group Typography
+$line-height: 1.5 !default;
+
+/// Set Global line-heights with no units
+/// @group Typography
+$unitless-lineheight: true !default;
+
+/// The ratio used to generate sizes and margins on heading tags
+/// @group Typography
+$type-ratio: $perfect-fourth !default;
+
+/// Global Font Smoothing
+/// @group Typography
+$webkit-smoothing: antialiased !default;
+
+/// Modular Steps
+/// ======================================================================
+
+/// Modular Stepping Multipliers
+/// @group Typography
+$modular-step-alpha: 5 !default;
+$modular-step-beta: 4 !default;
+$modular-step-gamma: 3 !default;
+$modular-step-delta: 2 !default;
+$modular-step-epsilon: 1 !default;
+$modular-step-zeta: 0 !default;
+$modular-step-eta: -1 !default;
+$modular-step-theta: -2 !default;
+$modular-step-iota: -3 !default;
+
+/// Font Weights
+/// ======================================================================
+
+/// Thin
+/// @group Typography
+$thin: 100 !default;
+
+/// Extra light
+/// @group Typography
+$extralight: 200 !default;
+
+/// Light
+/// @group Typography
+$light: 300 !default;
+
+/// Regular
+/// @group Typography
+$regular: 400 !default;
+
+/// Medium
+/// @group Typography
+$medium: 500 !default;
+
+/// Semibold
+/// @group Typography
+$semibold: 600 !default;
+
+/// Bold
+/// @group Typography
+$bold: 700 !default;
+
+/// Extra Bold
+/// @group Typography
+$extra-bold: 800 !default;
+
+/// Black
+$black: 900 !default;
+
+/// Global font styles
+/// ======================================================================
+
+/// Global Font Stack
+/// @group Typography
+$font-stack: $shelvetica !default;
+
+/// Global Font Weight
+/// @group Typography
+$font-weight: $regular !default;
+
+/// Global Font Color
+/// @group Typography
+$font-color: $dark !default;
+
+/// Global heading font styles
+/// ======================================================================
+
+/// Heading Font Stack
+/// @group Typography
+$heading-stack: $gillsans !default;
+
+/// Heading Font Color
+/// @group Typography
+$heading-weight: $regular !default;
+
+/// Heading Font Weight
+/// @group Typography
+$heading-color: $dark !default;
+
+/// Custom Font Path
+/// @group Typography
+$custom-font-path: '/assets/fonts/' !default;
+
+/// Links
+/// ======================================================================
+
+/// Link Color
+/// @group Typography
+$link: $dark !default;
+
+/// Link Hover Color
+/// @group Typography
+$link-hover: $jet !default;
+
+/// Link Hover Color
+/// @group Typography
+$link-hover-decoration: underline !default;
+
+/// Horizontal Rules
+/// ======================================================================
+
+/// Horizontal Rule color and thickness
+/// @group Typography
+$hr-style: 1px solid $primary !default;

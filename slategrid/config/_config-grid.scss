@@ -1,0 +1,179 @@
+// ======================================================================
+// Slate Grid Config | hello@hashandsalt.com
+// ======================================================================
+
+// ======================================================================
+// Grid
+// ======================================================================
+
+/// Grid Total Columns
+/// @group Grid
+$total-columns: 12 !default;
+
+/// Grid Total Width
+/// @group Grid
+$total-width: 100% !default;
+
+/// Grid Gutter Width
+/// @group Grid
+$gutter-width: 2% !default;
+
+/// Grid Column Bottom Spacing
+/// @group Grid
+$column-bottom-spacing: 24px !default;
+
+/// Grid Container margin
+/// @group Grid
+$container-margin: 2% !default;
+
+/// Class to use for rows
+/// @group Grid
+$class-container: 'row' !default;
+
+/// Class to use for columns
+/// @group Grid
+$class-column: 'col' !default;
+
+/// Class to use for push
+/// @group Grid
+$class-push: 'push' !default;
+
+/// Center Containers
+/// @group Grid
+$center-containers: true !default;
+
+/// Center Containers Max Width
+/// @group Grid
+$center-container-max-width: 1140px !default;
+
+/// Breakpoint - tiny
+/// @group Breakpoints
+$bp-tiny: 320px !default;
+
+/// Breakpoint - xsmall
+/// @group Breakpoints
+$bp-xsmall: 480px !default;
+
+/// Breakpoint - small
+/// @group Breakpoints
+$bp-small: 640px !default;
+
+/// Breakpoint - medium
+/// @group Breakpoints
+$bp-medium: 800px !default;
+
+/// Breakpoint - large
+/// @group Breakpoints
+$bp-large: 960px !default;
+
+/// Breakpoint - xl
+/// @group Breakpoints
+$bp-xl: 1140px !default;
+
+// ======================================================================
+// Gridler Defaults
+// ======================================================================
+
+/// Gridler Mixin - Class to use for the columns
+/// @group Gridler
+$gridler-element: $class-column !default;
+
+// Breakpoints
+
+/// Gridler Mixin - Small column breakpoint
+/// @group Gridler
+$gridler-sm: $bp-small !default;
+
+/// Gridler Mixin - Medium column breakpoint
+/// @group Gridler
+$gridler-me: $bp-medium !default;
+
+/// Gridler Mixin - Large column breakpoint
+/// @group Gridler
+$gridler-lg: $bp-large !default;
+
+// Columns
+
+/// Gridler Mixin - Small column count
+/// @group Gridler
+$gridler-sm-c: 6 !default;
+
+/// Gridler Mixin - Medium column count
+/// @group Gridler
+$gridler-me-c: 4 !default;
+
+/// Gridler Mixin - Large column count
+/// @group Gridler
+$gridler-lg-c: 3 !default;
+
+/// Gridler Mixin - Spacing below each column
+/// @group Gridler
+$gridler-column-bottom-spacing: $column-bottom-spacing !default;
+
+// ======================================================================
+// Holy Grail Defaults
+// ======================================================================
+
+/// Holy Grail Left Sidebar Element Class
+/// @group Layout Helpers
+$holygrail-left-element: 'left' !default;
+
+/// Holy Grail Middle Class
+/// @group Layout Helpers
+$holygrail-middle-element: 'middle' !default;
+
+/// Holy Grail Right Sidebar Class
+/// @group Layout Helpers
+$holygrail-right-element: 'right' !default;
+
+/// Holy Grail Left Sidebar Column Width
+/// @group Layout Helpers
+$holygrail-left-column: 3 !default;
+
+/// Holy Grail middle Sidebar Column Width
+/// @group Layout Helpers
+$holygrail-middle-column: 5 !default;
+
+/// Holy Grail right Sidebar Column Width
+/// @group Layout Helpers
+$holygrail-right-column: 4 !default;
+
+/// Holy Grail Breakpoint
+/// @group Layout Helpers
+$holygrail-breakpoint: $bp-medium !default;
+
+/// Holy Grail Bottom Spacing
+/// @group Layout Helpers
+$holygrail-column-bottom-spacing: $column-bottom-spacing !default;
+
+// ======================================================================
+// Flank
+// ======================================================================
+
+/// Flank Direction
+/// @group Layout Helpers
+$flankdir: 'right' !default;
+
+/// Flank Main Class
+/// @group Layout Helpers
+$flank-main-element: 'main' !default;
+
+/// Flank Flank Class
+/// @group Layout Helpers
+$flank-flank-element: 'flank' !default;
+
+/// Flank Main Column Width
+/// @group Layout Helpers
+$flank-main-column: 8 !default;
+
+/// Flank Column Width
+/// @group Layout Helpers
+$flank-flank-column: 4 !default;
+
+/// Flank Breakpoint
+/// @group Layout Helpers
+$flank-breakpoint: $bp-medium !default;
+
+/// Flank Bottom Spacing
+/// @group Layout Helpers
+$flank-column-bottom-spacing: $column-bottom-spacing !default;

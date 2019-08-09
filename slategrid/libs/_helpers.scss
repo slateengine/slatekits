@@ -1,0 +1,322 @@
+// ======================================================================
+// Slate Framework <hello@slateengine.com>
+// ======================================================================
+//
+// ======================================================================
+// Slate Grid
+// ======================================================================
+
+// Insipired by:
+// -------------------
+// Profound Grid: http://www.profoundgrid.com/
+// Semantic Grid: http://www.semantic.gs
+// Susy: http://susy.oddbird.net
+// Negative Grid: http://chrisplaneta.com/freebies/negativegrid-fluid-css-grid-by-chris-planeta/
+// ======================================================================
+/// Establish the grid-containing element. This is wrapper element for your columns.
+/// @example scss - Container
+/// .element {
+///     @include container;
+/// }
+/// @param {Variable} $grid-max-width [$center-container-max-width] - Maximum width that the containers will grow too.
+/// @param {Variable} $grid-center [$center-containers] - Center the container on the page without the need for additional markup
+/// @group Grid
+@mixin container($grid-max-width: $center-container-max-width, $grid-center: $center-containers, $c-margin: $container-margin) {
+  @include clearfix('mojo');
+  @if $grid-center {
+    @include rem(max-width, $grid-max-width);
+    margin: {
+      left: auto;
+      right: auto;
+    }
+    width: container-width($c-margin);
+  } @else {
+    width: container-width($c-margin);
+    margin-left: $c-margin;
+    margin-right: $c-margin;
+  }
+}
+/// Define columns.
+/// @example scss - Column
+/// .element {
+///     @include container;
+///     .col {@include column(6,3);}
+/// }
+/// @param {Variable} $columns-width - How many columns to span
+/// @param {Variable} $padding-columns - How many columns to push over by
+/// @group Grid
+@mixin column($columns-width, $padding-columns: null, $g-width: $gutter-width) {
+  float: left;
+  margin-right: -100%;
+  $width-perc: element-width($columns-width, $g-width);
+  width: $width-perc;
+  @if $padding-columns != null {
+    @include push($padding-columns, $g-width);
+  }
+}
+/// Push columns over.
+/// @example scss - Push
+/// .wrapper {
+///     @include container;
+///     .col {@include column(6); @include push(3);}
+/// }
+/// @param {Variable} $column-index - How many columns to push over by
+/// @group Grid
+@mixin push($column-index, $g-width: $gutter-width) {
+  $width-perc: 0;
+  @if $total-width == 100% {
+    $width-perc: $g-width + element-width($column-index, $g-width);
+  } @else {
+    // $width-perc: (column_width() + $g-width)*$column-index;
+    $width-perc: $g-width + element-width($column-index, $g-width);
+  }
+  margin-left: $width-perc;
+}
+// HELPER MIXINS
+/// Not really recommended, but if you like using a whole load of predefined classes, this is for you. It uses the column and container classes defined in the config.scss to generate CSS for a container, all columns as defined in $total-columns, and all matching push classes. Warning: This will add CSS to your project that you may or may not use.
+/// @example scss - Helper Classes
+///   @include generate_helper_classes;
+/// @example html - Helper Classes
+/// <div class='row'>
+/// <div class='col6 push3'>6 wide column pushed over by 3</div>
+/// </div>
+/// @param {Variable} $helper-break [medium] - The breakpoint at which the columns stack up into full width columns.
+/// @group Grid
+@mixin generate-helper-classes($helper-break: $bp-medium) {
+  // Helper Class: Container
+  .#{$class-container} {
+    @include container;
+  }
+  // Helper Class: Columns
+  @for $i from 1 through $total-columns {
+    .#{$class-column}#{$i} {
+      @include column(12);
+      margin-bottom: $column-bottom-spacing;
+      clear: both;
+    }
+  }
+  @include minbreak($helper-break) {
+    // Helper Class: Columns
+    @for $i from 1 through $total-columns {
+      .#{$class-column}#{$i} {
+        @include column($i);
+        clear: none;
+      }
+    }
+    // Helper Class: Horizontal Position
+    @for $i from 0 through $total-columns - 1 {
+      .#{$class-push}#{$i} {
+        @include push($i);
+        margin-bottom: $column-bottom-spacing;
+      }
+    }
+  }
+}
+/// Use this to push equal columns over with the same class, for example a page equal sized product thumbnails or portfolio of images.
+/// Just so you know, it's much easier and more flexible to do this with the Gridler mixin :)
+/// @example scss - Grid Positions
+/// .wrapper {
+///     @include container;
+///     .positioncol {@include column(3);}
+///     @include generate_grid_positions('positioncol', 3, 26px);
+/// }
+/// @example html - Grid Positions
+/// <div class='container'>
+/// <div class='positioncol'>A Pushed Column</div>
+/// <div class='positioncol'>A Pushed Column</div>
+/// <div class='positioncol'>A Pushed Column</div>
+/// <div class='positioncol'>A Pushed Column</div>
+/// </div>
+/// @param {Variable} $column-selector - The class name of the element to effect.
+/// @param {Variable} $element-width - Desired column width.
+/// @param {Variable} $ggsp [$column-bottom-spacing] - Space under the repeated columns.
+/// @group Grid
+@mixin generate-grid-positions($column-selector, $element-width, $ggsp: $column-bottom-spacing, $g-width: $gutter-width) {
+  $cols-per-row: floor($total-columns / $element-width);
+  @for $i from 1 through $cols-per-row {
+    #{$column-selector}:nth-child(#{$cols-per-row}n+#{$i}) {
+      @include push(($i - 1) * $element-width, $g-width);
+      @include rem(margin-bottom, $ggsp);
+      @if $i == 1 {
+        clear: both;
+      } @else {
+        clear: none;
+      }
+    }
+  }
+}
+
+// ======================================================================
+// Layout Kit
+// ======================================================================
+
+/// The Gridler allows you to very quickly build grids of equal sized columns
+/// and set breakpoints for how the columns columns collapse. A use case for this would be something like a product list on an ecommerce site or a portfolio of work.
+/// @example scss - Default Gridler
+/// .parentdiv {
+///   @include gridler;
+///      ...
+/// }
+/// @example scss - Custom Gridler
+/// .parentdiv {
+///   @include gridler($gridler-elm: 'your-class', $gridler-base: 12, $gsmall: 6, $gmedium: 4, $glarge: 3, $gsmbp: $bp-small, $gmebp: $bp-medium, $glgbp: 1440px);
+///      ...
+/// }
+/// @param {Variable} $gridler-elm [$gridler-element] - Class to use for the columns. Set globally in the config, but can be set at will when using the mixin.
+/// @param {Variable} $gridler-base [$gridler-default-c] - Default column width to use before Media Queries kick in.
+/// @param {Variable} $gsmall [$gridler-sm-c] - Number of columns to use at the smallest size
+/// @param {Variable} $gmedium [$gridler-me-c] - Number of columns to use at the medium size
+/// @param {Variable} $glarge [$gridler-lg-c] - Number of columns to use at the largest size
+/// @param {Variable} $gsmbp [$gridler-sm] - Break point for the small range
+/// @param {Variable} $gmebp [$gridler-me] - Break point for the medium range
+/// @param {Variable} $glgbp [$gridler-lg] - Break point for the large range
+/// @author Hash&Salt
+/// @group Layout Helpers
+
+@mixin gridler($gridler-elm: $gridler-element, $gcbsp: $gridler-column-bottom-spacing, $gsmall: $gridler-sm-c, $gmedium: $gridler-me-c, $glarge: $gridler-lg-c, $g-width: $gutter-width, $c-margin: $container-margin, $gsmbp: $gridler-sm, $gmebp: $gridler-me, $glgbp: $gridler-lg, $gridler-center: $center-containers, $gridler-maxwidth: $center-container-max-width) {
+  @include container($gridler-maxwidth, $gridler-center, $c-margin);
+
+  > .#{$gridler-elm} {
+    @include column($total-columns);
+    @include rem(margin-bottom, $gcbsp);
+    clear: both;
+  }
+  @media screen and (min-width: $gsmbp) {
+    @include generate-grid-positions('.#{$gridler-elm}', $gsmall, $gcbsp, $g-width);
+
+    > .#{$gridler-elm} {
+      @include column($gsmall, null, $g-width);
+      @include rem(margin-bottom, $gcbsp);
+      clear: none;
+    }
+  }
+  @media screen and (min-width: $gmebp) {
+    @include generate-grid-positions('.#{$gridler-elm}', $gmedium, $gcbsp, $g-width);
+
+    > .#{$gridler-elm} {
+      @include column($gmedium, null, $g-width);
+      @include rem(margin-bottom, $gcbsp);
+      clear: none;
+    }
+  }
+  @media screen and (min-width: $glgbp) {
+    @include generate-grid-positions('.#{$gridler-elm}', $glarge, $gcbsp, $g-width);
+
+    > .#{$gridler-elm} {
+      @include column($glarge, null, $g-width);
+      @include rem(margin-bottom, $gcbsp);
+      clear: none;
+    }
+  }
+}
+
+// Holygrail
+// ======================================================================
+
+/// Easily pull off a triple column layour aka The Holy Grail.
+/// @example scss - Default Holy Grail
+/// .parentdiv {
+///   @include holygrail;
+///      ...
+/// }
+/// @example scss - Custom Holy Grail
+/// .parentdiv {
+///   @include holygrail($holygrail-left-elm: 'holygrail-left', $holygrail-middle-elm: 'holygrail-middle', $holygrail-right-elm: 'holygrail-right', $holygrail-left-c: 2, $holygrail-middle-c: 3, $holygrail-right-c: 7, $holygrail-bp: 640px);
+///      ...
+/// }
+/// @param {Variable} $elm [$element] - Class to use for the columns. Set globally in the config, but can be set at will when using the mixin.
+/// @param {Variable} $gsmall [$sm-c] - Number of columns to use at the smallest size
+/// @param {Variable} $gmedium [$me-c] - Number of columns to use at the medium size
+/// @param {Variable} $glarge [$lg-c] - Number of columns to use at the largest size
+/// @group Layout Helpers
+
+@mixin holygrail($holygrail-left-elm: $holygrail-left-element, $holygrail-middle-elm: $holygrail-middle-element, $holygrail-right-elm: $holygrail-right-element, $holygrail-bp: $holygrail-breakpoint, $holygrail-left-c: $holygrail-left-column, $holygrail-middle-c: $holygrail-middle-column, $holygrail-right-c: $holygrail-right-column, $g-width: $gutter-width, $c-margin: $container-margin, $holygrail-center: $center-containers, $holygrail-maxwidth: $center-container-max-width, $gcbsp: $holygrail-column-bottom-spacing) {
+  @include container($holygrail-maxwidth, $holygrail-center, $c-margin);
+
+  .#{$holygrail-left-elm},
+  .#{$holygrail-middle-elm},
+  .#{$holygrail-right-elm} {
+    @include column(12, null, $g-width);
+    @include rem(margin-bottom, $gcbsp);
+    clear: both;
+  }
+  @media screen and (min-width: $holygrail-bp) {
+    .#{$holygrail-left-elm} {
+      @include column($holygrail-left-c, null, $g-width);
+      clear: none;
+    }
+
+    .#{$holygrail-middle-elm} {
+      @include column($holygrail-middle-c, $holygrail-left-c, $g-width);
+      clear: none;
+    }
+
+    .#{$holygrail-right-elm} {
+      @include column($holygrail-right-c, $holygrail-left-c + $holygrail-middle-c, $g-width);
+      clear: none;
+    }
+  }
+}
+
+// Flank
+// ======================================================================
+
+/// Flank allows to you do a content area flank by a sidebar, either on the left or the right.
+/// @example scss - Default Gridler
+/// .parentdiv {
+///   @include flank;
+///      ...
+/// }
+/// @example scss - Custom Gridler
+/// .parentdiv {
+///   @include flank($flankdir: 'left', $flank-flank-elm: 'flank', $flank-main-elm: 'main', $flank-main-c: 7, $flank-flank-c: 5, $flank-bp: 640px);
+///      ...
+/// }
+/// @param {Variable} $flankdir - Side you want the to flank to appear. Set to right or left
+/// @param {Variable} $flank-main-elm [$flank-main-element] - Class for the large area
+/// @param {Variable} $flank-flank-elm [$flank-flank-element] - Class for the small area
+/// @param {Variable} $flank-bp [$flank-breakpoint] - Breakpoint at which the flank collapse to one column
+/// @param {Variable} $flank-main-c [$flank-main-column] - Width in columns of large area
+/// @param {Variable} $flank-flank-c [$flank-flank-column] - Width in columns of large area
+/// @group Layout Helpers
+
+@mixin flank($flankdir: 'right', $flank-main-elm: $flank-main-element, $flank-flank-elm: $flank-flank-element, $flank-main-c: $flank-main-column, $flank-flank-c: $flank-flank-column, $flank-bp: $flank-breakpoint, $gcbsp: $flank-column-bottom-spacing, $g-width: $gutter-width, $c-margin: $container-margin, $flank-center: $center-containers, $flank-maxwidth: $center-container-max-width) {
+  @include container($flank-maxwidth, $flank-center, $c-margin);
+
+  .#{$flank-flank-elm},
+  .#{$flank-main-elm} {
+    @include column(12, null, $g-width);
+    @include rem(margin-bottom, $gcbsp);
+    clear: both;
+  }
+
+  @if $flankdir == 'left' {
+    // left flank
+    @media screen and (min-width: $flank-bp) {
+      .#{$flank-main-elm} {
+        @include column($flank-main-c, $flank-flank-c, $g-width);
+        clear: none;
+      }
+
+      .#{$flank-flank-elm} {
+        @include column($flank-flank-c, 0, $g-width);
+        clear: none;
+      }
+    }
+  }
+
+  @if $flankdir == 'right' {
+    // right flank
+    @media screen and (min-width: $flank-bp) {
+      .#{$flank-main-elm} {
+        @include column($flank-main-c, 0, $g-width);
+        clear: none;
+      }
+
+      .#{$flank-flank-elm} {
+        @include column($flank-flank-c, $flank-main-c, $g-width);
+        clear: none;
+      }
+    }
+  }
+}

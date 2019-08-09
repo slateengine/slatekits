@@ -1,0 +1,8 @@
+{
+  "name": "slatetables",
+  "version": "8.0.0",
+  "description": "An extension for Slate, a Sass Framework for building at light speed",
+  "main": "_slatetables.scss",
+  "author": "Hash&Salt",
+  "license": "MIT"
+}

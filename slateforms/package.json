@@ -1,0 +1,8 @@
+{
+  "name": "slateforms",
+  "version": "8.0.0",
+  "description": "An extension for Slate, a Sass Framework for building at light speed",
+  "main": "_slateforms.scss",
+  "author": "Hash&Salt",
+  "license": "MIT"
+}

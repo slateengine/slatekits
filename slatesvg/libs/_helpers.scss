@@ -1,0 +1,20 @@
+// ======================================================================
+// Slate Framework <hello@slateengine.com>
+// ======================================================================
+//
+// ======================================================================
+// Slate SVG
+// ======================================================================
+
+/// SVG. Use SVG graphic from a variable and optionally change its
+/// @example scss - SVG Icon Color
+///     .yourelement {
+///       @include svgbg($youriconvar);
+///     }
+/// @param {string} $icon - Variable with svg as a string
+/// @param {string} $newcolor - Variable with svg as a string
+/// @param {string} $oldcolor - Icons original color to replace
+/// @group Helpers
+@mixin svgbg($icon, $newcolor: $svg-icon-replace-color, $oldcolor: $svg-icon-orginal-color) {
+  background-image: svg-url-with-replaced-fill($icon, $oldcolor, $newcolor);
+}

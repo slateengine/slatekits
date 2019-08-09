@@ -1,0 +1,8 @@
+{
+  "name": "slatebuttons",
+  "version": "8.0.0",
+  "description": "An extension for Slate, a Sass Framework for building at light speed",
+  "main": "_slatebuttons.scss",
+  "author": "Hash&Salt",
+  "license": "MIT"
+}
