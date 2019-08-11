@@ -28,7 +28,8 @@
     }
 
     &[multiple] {
-      height: auto;
+      height: 100%;
+      height: rem(120px);
     }
     // Triangle
     @if map-deep-get($map-name, 'bg', 'bg-color') != transparent {

@@ -57,6 +57,7 @@
     @include lightness(map-deep-get($map-name, 'bg', 'bg-color-disabled'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
   }
 }
+
 /// Style all inputs at once except select
 /// @author Hash&Salt
 /// @group Forms
@@ -74,6 +75,7 @@
   [type='time'],
   [type='url'],
   [type='week'],
+  input,
   textarea {
     @content;
   }

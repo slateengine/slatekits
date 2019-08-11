@@ -38,6 +38,24 @@
     -webkit-appearance: none;
   }
 
+  [list]::-webkit-calendar-picker-indicator {
+    display: none;
+  }
+
+  .datalist {
+    @if map-deep-get($input-skin, 'bg', 'bg-color') != transparent {
+      background-size: map-deep-get($map-name, 'selects', 'triangle-size');
+      background-position: map-deep-get($map-name, 'selects', 'triangle-position');
+      background-origin: content-box;
+      background-repeat: no-repeat;
+      @if lightness(map-deep-get($map-name, 'bg', 'bg-color')) < 50 {
+        background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'selects', 'arrow'), '#000000', map-deep-get($map-name, 'selects', 'triangle-color-light'));
+      } @else {
+        background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'selects', 'arrow'), '#000000', map-deep-get($map-name, 'selects', 'triangle-color-dark'));
+      }
+    }
+  }
+
   [type='color'] {
     @include rem(height, map-deep-get($map-name, height));
     @include rem(margin, map-deep-get($map-name, margin));
