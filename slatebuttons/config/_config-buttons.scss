@@ -10,7 +10,6 @@ $button-default: (
 
   use-borders: true,
 
-
   default: $primary,
   hover: darken($primary, 15%),
   focus: darken($primary, 20%),
@@ -32,9 +31,9 @@ $button-default: (
   border-focus-color: $dark,
   border-disabled-color: darken($disabled, 20%),
 
-  height: 50px,
+  height: 44px,
   margin: 0 0 24px 0,
-  padding: 0 9px,
+  padding: 0 8px,
   rounded: 0,
 
   display: inline-block,
@@ -68,9 +67,9 @@ $button-addon: (
   border-focus-color: $dark,
   border-disabled-color: darken($disabled, 20%),
 
-  height: 50px,
+  height: 44px,
   margin: 0 0 0 0,
-  padding: 0 9px,
+  padding: 0 8px,
   rounded: 0,
 
   display: inline-block,
@@ -105,9 +104,9 @@ $button-positive: (
   border-focus-color: $dark,
   border-disabled-color: darken($disabled, 20%),
 
-  height: 50px,
+  height: 44px,
   margin: 0 0 24px 0,
-  padding: 0 9px,
+  padding: 0 8px,
   rounded: 0,
 
   display: inline-block,
@@ -143,9 +142,9 @@ $button-negative: (
   border-focus-color: $dark,
   border-disabled-color: darken($disabled, 20%),
 
-  height: 50px,
+  height: 44px,
   margin: 0 0 24px 0,
-  padding: 0 9px,
+  padding: 0 8px,
   rounded: 0,
 
   display: inline-block,
@@ -166,9 +165,9 @@ $button-gradient: (
     textalign: center,
     text-transform: uppercase,
 
-    height: 50px,
+    height: 44px,
     margin: 0 0 24px 0,
-    padding: 0 9px,
+    padding: 0 8px,
     rounded: 0,
 
     display: inline-block,
