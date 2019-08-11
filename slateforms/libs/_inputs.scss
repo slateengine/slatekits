@@ -5,14 +5,12 @@
 // ======================================================================
 // Slate Forms: Inputs
 // ======================================================================
-
 /// [Setup input styles. These are controlled by a SASS map variable (`$input-default`) in the config files.Copy this variable and modify to make multiple styles. Simply pass the new variable as a parameter on the mixin.]
 /// @param  {Variable} $map-name [$input-default] Variable for the inputs style.
 /// @example scss - Basic Inputs
 ///   @include inputs($map-variable);
 /// @author Hash&Salt
 /// @group Forms
-
 @mixin inputs($map-name: $input-skin) {
   input,
   select,
@@ -36,12 +34,6 @@
     resize: vertical;
   }
 
-  [type='range'] {
-    @include rem(margin, map-deep-get($map-name, 'margin'));
-    @include rem(height, map-deep-get($map-name, 'height'));
-    width: map-deep-get($map-name, width);
-  }
-
   [type='search'] {
     -webkit-appearance: none;
   }
@@ -56,9 +48,18 @@
     background-color: transparent;
     outline: none;
     cursor: pointer;
+    @include borders(map-deep-get($map-name, 'borders', 'border-width'), map-deep-get($map-name, 'borders', 'border-style'), map-deep-get($map-name, 'borders', 'border-color'));
 
-    &:focus {}
+    &:hover {
+      @include borders(map-deep-get($map-name, 'borders', 'border-width'), map-deep-get($map-name, 'borders', 'border-style'), map-deep-get($map-name, 'borders', 'border-hover-color'));
+    }
 
-    &:disabled {}
+    &:focus {
+      @include borders(map-deep-get($map-name, 'borders', 'border-width'), map-deep-get($map-name, 'borders', 'border-style'), map-deep-get($map-name, 'borders', 'border-focus-color'));
+    }
+
+    &:focus {
+      @include borders(map-deep-get($map-name, 'borders', 'border-width'), map-deep-get($map-name, 'borders', 'border-style'), map-deep-get($map-name, 'borders', 'border-disabled-color'));
+    }
   }
 }
