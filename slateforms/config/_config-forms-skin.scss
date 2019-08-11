@@ -88,23 +88,26 @@ $input-skin: (
 
   // Range
   'range': (
+    'contrast': 15%,
+    'ie-bottom-track-color': darken(#eee, 15%),
+    'margin': 12px,
     'thumb': (
       'color': $primary,
       'radius': 100%,
-      'height': 24px,
-      'width': 24px,
+      'height': 36px,
+      'width': 36px,
       'border-width': 2px,
       'border-style': solid,
-      'border-color': darken($primary, 15%),
+      'border-color': $gray,
     ),
     'track': (
-      'color': $dark,
-      'radius': 100%,
+      'color': #eee,
+      'radius': 2px,
       'height': 24px,
-      'width': 24px,
-      'border-width': 1px,
+      'width': 100%,
+      'border-width': 2px,
       'border-style': solid,
-      'border-color': darken($primary, 15%),
+      'border-color': $gray,
     ),
   ),
 

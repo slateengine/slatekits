@@ -24,12 +24,13 @@
   $track-border-color: map-deep-get($map-name, 'range', 'track', 'border-color');
   $track-border-style: map-deep-get($map-name, 'range', 'track', 'border-style');
   // Misc Vars
+  $margin: map-deep-get($map-name, 'range', 'margin');
   $contrast: map-deep-get($map-name, 'range', 'contrast');
   $ie-bottom-track-color: map-deep-get($map-name, 'range', 'ie-bottom-track-color');
 
   [type='range'] {
     width: $track-width;
-    margin: 0;
+    margin: rem($margin);
     background: transparent;
     -webkit-appearance: none;
 
