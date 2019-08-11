@@ -1,0 +1,115 @@
+// Custom radios
+// ======================================================================
+@mixin checkradio($map-name: $input-skin) {
+  label {
+    @include rem(padding-left, map-deep-get($map-name, 'radios', 'label-h-align'));
+    @include rem(margin-bottom, map-deep-get($map-name, 'radios', 'spacing'));
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+
+    &::before {
+      @include rem(width, map-deep-get($map-name, 'radios', 'width'));
+      @include rem(height, map-deep-get($map-name, 'radios', 'height'));
+      @include rem(bottom, map-deep-get($map-name, 'radios', 'input-v-align'));
+      content: '';
+      color: map-deep-get($map-name, 'radios', 'selected-color');
+      display: inline-block;
+      position: absolute;
+      left: 0;
+      background-color: map-deep-get($map-name, 'bg', 'bg-color');
+      @include borders($map-name, 'borders', 'border-color');
+    }
+  }
+
+  [type='checkbox'],
+  [type='radio'] {
+    @include rem(margin, map-deep-get($map-name, 'radios', 'check-radio-margin'));
+    margin: 0;
+    padding: 0;
+    vertical-align: middle;
+    display: inline;
+    height: auto;
+    width: auto;
+    position: absolute;
+    left: -99999px;
+
+    + label {
+      @include rem(margin-bottom, map-deep-get($map-name, 'radios', 'spacing'));
+      margin-left: 0;
+    }
+    // checked
+    &:checked {
+      + label {
+        &::before {
+          content: '';
+          background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'radios', 'checkicon'), '#000000', map-deep-get($map-name, 'radios', 'selected-color'));
+          background-size: map-deep-get($map-name, 'radios', 'checkicon-size');
+          background-repeat: no-repeat;
+          background-position: center center;
+          @include borders($map-name, 'radios', 'border-checked-color');
+        }
+      }
+    }
+    // focus
+    &:focus {
+      + label {
+        &::before {
+          @include borders($map-name, 'radios', 'border-focus-color');
+          color: map-deep-get($map-name, 'radios', selected-color);
+          background-color: map-deep-get($map-name, 'bg', 'bg-color-focus');
+        }
+      }
+      // focus + checked
+      &:checked {
+        + label {
+          &::before {
+            @include borders($map-name, 'radios', 'border-checked-color');
+            color: map-deep-get($map-name, 'radios', selected-color);
+            background-color: map-deep-get($map-name, 'bg', 'bg-color-focus');
+          }
+        }
+      }
+    }
+    // hover
+    &:hover {
+      + label {
+        &::before {
+          @include borders($map-name, 'radios', 'border-hover-color');
+          color: map-deep-get($map-name, 'radios', 'selected-color');
+          background-color: map-deep-get($map-name, 'bg', 'bg-color-hover');
+        }
+      }
+      // hover + checked
+      &:checked {
+        + label {
+          &::before {
+            @include borders($map-name, 'radios', 'border-hover-checked-color');
+            color: map-deep-get($map-name, 'radios', 'selected-color');
+            background-color: map-get($map-name, background-color-hover-checked);
+          }
+        }
+      }
+    }
+  }
+
+  [type='radio'] {
+    + label {
+      &::before {
+        border-radius: map-deep-get($map-name, 'radios', 'radio-radius');
+      }
+    }
+
+    &:checked {
+      + label {
+        &::before {
+          content: '';
+          background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'radios', 'radioicon'), '#000000', map-deep-get($map-name, 'radios', 'selected-color'));
+          background-size: map-deep-get($map-name, 'radios', 'radioicon-size');
+          background-repeat: no-repeat;
+          background-position: center center;
+        }
+      }
+    }
+  }
+}

@@ -10,6 +10,7 @@ $button-default: (
 
   use-borders: true,
 
+
   default: $primary,
   hover: darken($primary, 15%),
   focus: darken($primary, 20%),
@@ -24,28 +25,51 @@ $button-default: (
   textalign: center,
   text-transform: uppercase,
 
-  border-left: 2px solid $gray,
-  border-right: 2px solid $gray,
-  border-top: 2px solid $gray,
-  border-bottom: 2px solid $gray,
-
-  border-hover-left: 2px solid $dark,
-  border-hover-right: 2px solid $dark,
-  border-hover-top: 2px solid $dark,
-  border-hover-bottom: 2px solid $dark,
-
-  border-focus-left: 2px solid $dark,
-  border-focus-right: 2px solid $dark,
-  border-focus-top: 2px solid $dark,
-  border-focus-bottom: 2px solid $dark,
-
-  border-disabled-left: 2px solid darken($disabled, 20%),
-  border-disabled-right: 2px solid darken($disabled, 20%),
-  border-disabled-top: 2px solid darken($disabled, 20%),
-  border-disabled-bottom: 2px solid darken($disabled, 20%),
+  border-width: 2px 2px 2px 2px,
+  border-style: solid,
+  border-color: $gray,
+  border-hover-color: $dark,
+  border-focus-color: $dark,
+  border-disabled-color: darken($disabled, 20%),
 
   height: 50px,
   margin: 0 0 24px 0,
+  padding: 0 9px,
+  rounded: 0,
+
+  display: inline-block,
+  boxsizing: content-box
+
+) !default;
+
+// Addon Button
+$button-addon: (
+
+  use-borders: true,
+
+  default: $primary,
+  hover: $positive,
+  focus: $positive,
+  active: $positive,
+  disabled: $disabled,
+
+  font-family: inherit,
+  textlight: $bright,
+  textdark: $dark,
+  textweight: $semibold,
+  font-size: $base-font-size,
+  textalign: center,
+  text-transform: uppercase,
+
+  border-width: 2px 2px 2px 2px,
+  border-style: solid,
+  border-color: $gray,
+  border-hover-color: $dark,
+  border-focus-color: $dark,
+  border-disabled-color: darken($disabled, 20%),
+
+  height: 50px,
+  margin: 0 0 0 0,
   padding: 0 9px,
   rounded: 0,
 
@@ -73,25 +97,13 @@ $button-positive: (
   textalign: center,
   text-transform: uppercase,
 
-  border-left: 2px solid darken($positive, 10%),
-  border-right: 2px solid darken($positive, 10%),
-  border-top: 2px solid darken($positive, 10%),
-  border-bottom: 2px solid darken($positive, 10%),
+  border-width: 2px 2px 2px 2px,
+  border-style: solid,
 
-  border-hover-left: 2px solid darken($positive, 15%),
-  border-hover-right: 2px solid darken($positive, 15%),
-  border-hover-top: 2px solid darken($positive, 15%),
-  border-hover-bottom: 2px solid darken($positive, 15%),
-
-  border-focus-left: 2px solid $dark,
-  border-focus-right: 2px solid $dark,
-  border-focus-top: 2px solid $dark,
-  border-focus-bottom: 2px solid $dark,
-
-  border-disabled-left: 2px solid darken($disabled, 20%),
-  border-disabled-right: 2px solid darken($disabled, 20%),
-  border-disabled-top: 2px solid darken($disabled, 20%),
-  border-disabled-bottom: 2px solid darken($disabled, 20%),
+  border-color: darken($positive, 10%),
+  border-hover-color: darken($positive, 15%),
+  border-focus-color: $dark,
+  border-disabled-color: darken($disabled, 20%),
 
   height: 50px,
   margin: 0 0 24px 0,
@@ -101,7 +113,7 @@ $button-positive: (
   display: inline-block,
   boxsizing: content-box
 
-) !default;
+);
 
 /// Negative Button Theme
 $button-negative: (
@@ -122,25 +134,14 @@ $button-negative: (
   textalign: center,
   text-transform: uppercase,
 
-  border-left: 2px solid darken($negative, 10%),
-  border-right: 2px solid darken($negative, 10%),
-  border-top: 2px solid darken($negative, 10%),
-  border-bottom: 2px solid darken($negative, 10%),
 
-  border-hover-left: 2px solid darken($negative, 15%),
-  border-hover-right: 2px solid darken($negative, 15%),
-  border-hover-top: 2px solid darken($negative, 15%),
-  border-hover-bottom: 2px solid darken($negative, 15%),
+  border-width: 2px 2px 2px 2px,
+  border-style: solid,
 
-  border-focus-left: 2px solid $dark,
-  border-focus-right: 2px solid $dark,
-  border-focus-top: 2px solid $dark,
-  border-focus-bottom: 2px solid $dark,
-
-  border-disabled-left: 2px solid darken($disabled, 20%),
-  border-disabled-right: 2px solid darken($disabled, 20%),
-  border-disabled-top: 2px solid darken($disabled, 20%),
-  border-disabled-bottom: 2px solid darken($disabled, 20%),
+  border-color: darken($negative, 10%),
+  border-hover-color: darken($negative, 15%),
+  border-focus-color: $dark,
+  border-disabled-color: darken($disabled, 20%),
 
   height: 50px,
   margin: 0 0 24px 0,
@@ -150,7 +151,7 @@ $button-negative: (
   display: inline-block,
   boxsizing: content-box
 
-) !default;
+);
 
 /// Gradient Button Theme
 $button-gradient: (
@@ -177,6 +178,8 @@ $button-gradient: (
     start-pos: 0%,
     end-pos: 100%,
 
+    default: $gradient-start,
+
     /// Default Colors
     start-color: $gradient-start,
     end-color: $gradient-end,
@@ -193,53 +196,12 @@ $button-gradient: (
     start-color-disabled: $disabled,
     end-color-disabled: darken($disabled, 30%),
 
-    border-left: 2px solid darken($gradient-start, 10%),
-    border-right: 2px solid darken($gradient-start, 10%),
-    border-top: 2px solid darken($gradient-start, 10%),
-    border-bottom: 2px solid darken($gradient-start, 10%),
-
-    border-hover-left: 2px solid darken($gradient-start, 15%),
-    border-hover-right: 2px solid darken($gradient-start, 15%),
-    border-hover-top: 2px solid darken($gradient-start, 15%),
-    border-hover-bottom: 2px solid darken($gradient-start, 15%),
-
-    border-focus-left: 2px solid $dark,
-    border-focus-right: 2px solid $dark,
-    border-focus-top: 2px solid $dark,
-    border-focus-bottom: 2px solid $dark,
-
-    border-disabled-left: 2px solid darken($disabled, 20%),
-    border-disabled-right: 2px solid darken($disabled, 20%),
-    border-disabled-top: 2px solid darken($disabled, 20%),
-    border-disabled-bottom: 2px solid darken($disabled, 20%),
+    border-width: 2px 2px 2px 2px,
+    border-style: solid,
+    border-color: darken($gradient-start, 10%),
+    border-hover-color: $dark,
+    border-active-color: $dark,
+    border-focus-color: $dark,
+    border-disabled-color: darken($disabled, 20%),
 
 ) !default;
-
-/// Button Icons
-/// ---------------------------------------------------------------------
-
-/// Button Icon Display
-$button-icons-display: inline-block !default;
-
-/// Button Icon Left Spacing
-/// @group Button Icons
-$button-icons-left-spacing: 0 8px 0 4px !default;
-
-/// Button Icon Right Spacing
-/// @group Button Icons
-$button-icons-right-spacing: 0 8px 0 4px !default;
-
-/// Button Icon Weight
-$button-icons-weight: $semibold !default;
-
-/// Button Math Icons
-$button-icons-math: false !default;
-
-/// Button Solid Arrows Icons
-$button-icons-solid-arrows: false !default;
-
-/// Button Dashed Arrows Icons
-$button-icons-dashed-arrows: false !default;
-
-/// Button Dashed Chevrons
-$button-icons-chevrons: false !default;

@@ -13,6 +13,7 @@
 /// @group Inputs
 $input-skin: (
   // Global
+  'input-class': 'input-text',
   'use-borders': true,
   'textlight': $bright,
   'textdark': $dark,
@@ -26,18 +27,18 @@ $input-skin: (
   // Backgrounds
   'bg': (
     'bg-color': $bright,
-    'bg-color-hover': $gray,
-    'bg-color-focus': $gray,
+    'bg-color-hover': $jet,
+    'bg-color-focus': $jet,
     'bg-color-disabled': $gray,
   ),
   // Borders
   'borders': (
     'border-width': 2px 2px 2px 2px,
-    'border-style': solid solid solid solid,
-    'border-color': $gray $gray $gray $gray,
-    'border-focus-color': $dark $dark $dark $dark,
-    'border-hover-color': $positive $positive $positive $positive,
-    'border-disabled-color': $disabled $disabled $disabled $disabled,
+    'border-style': solid,
+    'border-color': $gray,
+    'border-focus-color': $dark,
+    'border-hover-color': $positive,
+    'border-disabled-color': $disabled,
   ),
   // Selects
   'selects': (
@@ -62,7 +63,6 @@ $input-skin: (
     'right': 'addon-right',
     'both': 'addon-both',
     'font-weight': $semibold,
-    'button-width': 15%,
   ),
   // Radios & Checkboxes
   'radios': (

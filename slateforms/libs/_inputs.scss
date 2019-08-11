@@ -1,0 +1,56 @@
+/// [Setup input styles. These are controlled by a SASS map variable (`$input-default`) in the config files.Copy this variable and modify to make multiple styles. Simply pass the new variable as a parameter on the mixin.]
+/// @param  {Variable} $map-name [$input-default] Variable for the inputs style.
+/// @example scss - Basic Inputs
+///   @include inputs($map-variable);
+/// @author Hash&Salt
+/// @group Forms
+
+@mixin inputs($map-name: $input-skin) {
+  input,
+  select,
+  textarea {
+    display: inline-block;
+    width: auto;
+  }
+
+  .#{map-deep-get($map-name, 'input-class')} {
+    @include inputstyle;
+  }
+
+  textarea {
+    @include rem(margin, map-deep-get($map-name, 'margin'));
+    @include rem(min-height, 150px);
+    position: relative;
+    overflow: auto;
+    outline: none;
+    line-height: map-deep-get($map-name, 'line-height');
+    box-sizing: border-box;
+    resize: vertical;
+  }
+
+  [type='range'] {
+    @include rem(margin, map-deep-get($map-name, 'margin'));
+    @include rem(height, map-deep-get($map-name, 'height'));
+    width: map-deep-get($map-name, width);
+  }
+
+  [type='search'] {
+    -webkit-appearance: none;
+  }
+
+  [type='color'] {
+    @include rem(height, map-deep-get($map-name, height));
+    @include rem(margin, map-deep-get($map-name, margin));
+    @include rem(font-size, map-deep-get($map-name, font-size));
+    width: map-deep-get($map-name, width);
+    box-sizing: border-box;
+    display: block;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+
+    &:focus {}
+
+    &:disabled {}
+  }
+}

@@ -1,0 +1,108 @@
+/// Append or prepend an icon / button / link to an input or select box. These are controlled by a SASS map variable (`$select-default`) in the config files.
+/// Copy this variable and modify to make multiple styles. Simply pass the new variable as a parameter on
+/// the mixin.
+/// @example scss - Basic Select
+/// .form {
+///     @include select($map-variable);
+/// }
+/// @example html - Addon HTML
+/// <div class='form-addon addon-right'>
+///   <select class='addon-field' name='select'>
+///     <option value='About'>About</option>
+///   </select>
+/// <div class='addon-button'><button type='button'>Go!</button></div>
+/// </div>
+/// @param {Variable} $map-name [$input-default] - SASS map variable for the select element style.
+/// @author Hash&Salt
+/// @group Forms
+
+@mixin addons ($map-name: $input-skin, $button-skin: $button-addon) {
+  .form-addon {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 'label label' 'input button';
+    grid-auto-flow: dense;
+    align-items: center;
+    // Label
+    label {
+      grid-area: label;
+    }
+    // Inputs
+    @include inputs-all {
+      grid-area: input;
+      width: auto;
+    }
+    // Select
+    select {
+      grid-area: input;
+      width: auto;
+    }
+    // Button
+    [type='submit'],
+    span,
+    button {
+      grid-area: button;
+      @include button($button-skin);
+      white-space: nowrap;
+    }
+
+    span {
+      grid-area: icon;
+    }
+    // Modifiers
+    &.addon-left {
+      grid-template-areas: 'label label' 'button input';
+      grid-template-columns: auto 1fr;
+
+      [type='submit'],
+      span,
+      button {
+        border-right: 0;
+
+        &:hover {
+          border-right: 0;
+        }
+      }
+    }
+
+    &.addon-right {
+      [type='submit'],
+      span,
+      button {
+        border-left: 0;
+
+        &:hover {
+          border-left: 0;
+        }
+      }
+    }
+
+    &.addon-icon {
+      grid-template-columns: auto 2fr auto;
+      grid-template-rows: auto auto;
+      grid-template-areas: 'label label label' 'icon input button';
+
+      span {
+        border-right: 0;
+        display: block;
+
+        &:hover {
+          border-right: 0;
+          cursor: default;
+          background: map-get($button-addon, default);
+          @include lightness(map-get($button-addon, 'default'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+        }
+      }
+
+      [type='submit'],
+      button {
+        border-left: 0;
+
+        &:hover {
+          border-left: 0;
+        }
+      }
+    }
+  }
+}

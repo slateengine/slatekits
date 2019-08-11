@@ -8,9 +8,14 @@
 @import 'config/config-forms-skin';
 @import 'config/config-forms';
 
-
-
-// Buttons
+// Forms
 // ======================================================================
 
 @import 'libs/form-helpers';
+@import 'libs/input-helpers';
+
+// Input Types
+@import 'libs/inputs';
+@import 'libs/checkradio';
+@import 'libs/select';
+@import 'libs/addons';
