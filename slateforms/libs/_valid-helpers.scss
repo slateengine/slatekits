@@ -31,7 +31,7 @@
 
     // Classes for required Inputs
 
-    .input-text {
+    .#{map-get($map-name, 'input-class')} {
       // Valid
       &.#{map-deep-get($map-name, 'validation', 'valid-class')} {
         border-color: map-deep-get($map-name, 'validation', 'valid-input-border-color');
@@ -69,7 +69,7 @@
 
   } @else {
     // HTML 5 for Required Inputs
-    .input-text {
+    .#{map-get($map-name, 'input-class')} {
       &:focus {
         // Required
         &:required {

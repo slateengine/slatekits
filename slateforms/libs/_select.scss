@@ -28,7 +28,7 @@
       background-position: map-deep-get($map-name, 'selects', 'triangle-position');
       background-origin: content-box;
       background-repeat: no-repeat;
-      @if lightness(map-deep-get($map-name, 'bg', 'bg-color')) < 60% {
+      @if lightness(map-deep-get($map-name, 'bg', 'bg-color')) < 50 {
         background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'selects', 'arrow'), '#000000', map-deep-get($map-name, 'selects', 'triangle-color-light'));
       } @else {
         background-image: svg-url-with-replaced-fill(map-deep-get($map-name, 'selects', 'arrow'), '#000000', map-deep-get($map-name, 'selects', 'triangle-color-dark'));
