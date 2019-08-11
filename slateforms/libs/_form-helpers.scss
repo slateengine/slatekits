@@ -3,12 +3,11 @@
 // ======================================================================
 //
 // ======================================================================
-// Slate Forms
+// Slate Form Helpers
 // ======================================================================
 
 @import 'input-helpers';
 @import 'valid-helpers';
-
 
 /// [Basic setup for forms, using some sensible defaults.]
 /// @param  {[type]} $map-name [$form-skin-default] [variable used for the forms skin]
@@ -35,5 +34,6 @@
       display: inline-block;
       font-style: inherit;
       color: map-deep-get($map-name, 'labels', 'color');
+      line-height: $line-height;
   }
 }

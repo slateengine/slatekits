@@ -24,6 +24,7 @@
   text-align: map-deep-get($table-skin, $el, 'textalign');
   @include borders(map-deep-get($table-skin, $el, 'borderwidth'), map-deep-get($table-skin, $el, 'borderstyle'), map-deep-get($table-skin, $el, 'bordercolor'));
 }
+
 @mixin table($table-skin: $default-table) {
   font-family: map-deep-get($table-skin, 'fontfamily');
   table-layout: map-deep-get($table-skin, 'layout');

@@ -64,9 +64,6 @@
       }
     }
 
-
-
-
   } @else {
     // HTML 5 for Required Inputs
     .#{map-get($map-name, 'input-class')} {

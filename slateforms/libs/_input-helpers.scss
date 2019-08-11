@@ -5,7 +5,6 @@
 // ======================================================================
 // Slate Forms: Input Helpers
 // ======================================================================
-
 // Inputs
 @mixin inputstyle($map-name: $input-skin) {
   @include rem(height, map-deep-get($map-name, 'height'));
@@ -58,7 +57,6 @@
     @include lightness(map-deep-get($map-name, 'bg', 'bg-color-disabled'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
   }
 }
-
 /// Style all inputs at once except select
 /// @author Hash&Salt
 /// @group Forms
@@ -87,6 +85,7 @@
 /// @param  {Variable} $map-name [$form-skin-default] [Config variable to use for forms]
 /// @author Hash&Salt
 /// @group Forms
+
 @mixin form-complete($map-name: $form-skin) {
   @if map-deep-get($map-name, 'components', 'baseform') == true {
     @include form;
@@ -96,6 +95,9 @@
   }
   @if map-deep-get($map-name, 'components', 'select') == true {
     @include select(map-deep-get($map-name, 'skins', 'select'));
+  }
+  @if map-deep-get($map-name, 'components', 'range') == true {
+    @include range-input(map-deep-get($map-name, 'skins', 'range'));
   }
   @if map-deep-get($map-name, 'components', 'addons') == true {
     @include addons(map-deep-get($map-name, 'skins', 'addons'));

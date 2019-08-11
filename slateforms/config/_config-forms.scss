@@ -16,6 +16,7 @@ $form-skin: (
     inputs: true,
     addons: true,
     select: true,
+    range: true,
     validation: true
   ),
   /// Form Element
@@ -44,6 +45,7 @@ $form-skin: (
     inputs: $input-skin,
     addons: $input-skin,
     select: $input-skin,
+    range: $input-skin,
     validation: $input-skin,
   ),
 ) !default;

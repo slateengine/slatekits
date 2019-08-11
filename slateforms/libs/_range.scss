@@ -1,0 +1,144 @@
+// ======================================================================
+// Slate Framework <hello@slateengine.com>
+// ======================================================================
+//
+// ======================================================================
+// Slate Forms: Range Slider
+// ======================================================================
+// Based on https://github.com/darlanrod/input-range-scss
+@mixin range-input($map-name: $input-skin) {
+  // Thumb Vars
+  $thumb-color: map-deep-get($map-name, 'range', 'thumb', 'color');
+  $thumb-radius: map-deep-get($map-name, 'range', 'thumb', 'radius');
+  $thumb-height: map-deep-get($map-name, 'range', 'thumb', 'height');
+  $thumb-width: map-deep-get($map-name, 'range', 'thumb', 'width');
+  $thumb-border-width: map-deep-get($map-name, 'range', 'thumb', 'border-width');
+  $thumb-border-color: map-deep-get($map-name, 'range', 'thumb', 'border-color');
+  $thumb-border-style: map-deep-get($map-name, 'range', 'thumb', 'border-style');
+  // Track Vars
+  $track-color: map-deep-get($map-name, 'range', 'track', 'color');
+  $track-radius: map-deep-get($map-name, 'range', 'track', 'radius');
+  $track-height: map-deep-get($map-name, 'range', 'track', 'height');
+  $track-width: map-deep-get($map-name, 'range', 'track', 'width');
+  $track-border-width: map-deep-get($map-name, 'range', 'track', 'border-width');
+  $track-border-color: map-deep-get($map-name, 'range', 'track', 'border-color');
+  $track-border-style: map-deep-get($map-name, 'range', 'track', 'border-style');
+  // Misc Vars
+  $contrast: map-deep-get($map-name, 'range', 'contrast');
+  $ie-bottom-track-color: map-deep-get($map-name, 'range', 'ie-bottom-track-color');
+
+  [type='range'] {
+    -webkit-appearance: none;
+    background: transparent;
+    margin: 0;
+    width: $track-width;
+
+    &::-moz-focus-outer {
+      border: 0;
+    }
+
+    &:focus {
+      outline: 0;
+
+      &::-webkit-slider-runnable-track {
+        background: lighten($track-color, $contrast);
+      }
+
+      &::-ms-fill-lower {
+        background: $track-color;
+      }
+
+      &::-ms-fill-upper {
+        background: lighten($track-color, $contrast);
+      }
+    }
+
+    &::-webkit-slider-runnable-track {
+      cursor: default;
+      height: $track-height;
+      transition: all 0.2s ease;
+      width: $track-width;
+      background: $track-color;
+      @include borders($track-border-width, $track-border-style, $track-border-color);
+      border-radius: $track-radius;
+    }
+
+    &::-webkit-slider-thumb {
+      background: $thumb-color;
+      @include borders($thumb-border-width, $thumb-border-style, $thumb-border-color);
+      border-radius: $thumb-radius;
+      box-sizing: border-box;
+      cursor: default;
+      height: $thumb-height;
+      width: $thumb-width;
+      -webkit-appearance: none;
+      margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
+    }
+
+    &::-moz-range-track {
+      cursor: default;
+      height: $track-height;
+      transition: all 0.2s ease;
+      width: $track-width;
+      background: $track-color;
+      @include borders($track-border-width, $track-border-style, $track-border-color);
+      border-radius: $track-radius;
+      height: $track-height / 2;
+    }
+
+    &::-moz-range-thumb {
+      background: $thumb-color;
+      @include borders($thumb-border-width, $thumb-border-style, $thumb-border-color);
+      border-radius: $thumb-radius;
+      box-sizing: border-box;
+      cursor: default;
+      height: $thumb-height;
+      width: $thumb-width;
+    }
+
+    &::-ms-track {
+      cursor: default;
+      height: $track-height;
+      transition: all 0.2s ease;
+      width: $track-width;
+      background: transparent;
+      border-color: transparent;
+      border-width: ($thumb-height / 2) 0;
+      color: transparent;
+    }
+
+    &::-ms-fill-lower {
+      background: $ie-bottom-track-color;
+      @include borders($track-border-width, $track-border-style, $track-border-color);
+      border-radius: ($track-radius * 2);
+    }
+
+    &::-ms-fill-upper {
+      background: $track-color;
+      @include borders($track-border-width, $track-border-style, $track-border-color);
+      border-radius: ($track-radius * 2);
+    }
+
+    &::-ms-thumb {
+      background: $thumb-color;
+      @include borders($thumb-border-width, $thumb-border-style, $thumb-border-color);
+      border-radius: $thumb-radius;
+      box-sizing: border-box;
+      cursor: default;
+      height: $thumb-height;
+      width: $thumb-width;
+      margin-top: $track-height / 4;
+    }
+
+    &:disabled {
+      &::-moz-range-thumb,
+      &::-ms-fill-lower,
+      &::-ms-fill-upper,
+      &::-ms-thumb,
+      &::-webkit-slider-runnable-track,
+      &::-webkit-slider-thumb {
+        cursor: not-allowed;
+      }
+    }
+  }
+}

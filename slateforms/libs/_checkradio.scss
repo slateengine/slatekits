@@ -1,5 +1,11 @@
-// Custom radios
 // ======================================================================
+// Slate Framework <hello@slateengine.com>
+// ======================================================================
+//
+// ======================================================================
+// Slate Forms: Radios / Checkboxes
+// ======================================================================
+
 @mixin checkradio($map-name: $input-skin) {
   label {
     @include rem(padding-left, map-deep-get($map-name, 'radios', 'label-h-align'));
