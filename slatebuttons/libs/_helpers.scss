@@ -46,8 +46,6 @@
 /// @param {Variable} $map-name [$button-default] - Skin variable to use for the button.
 /// @group Buttons
 
-
-
 @mixin button($map-name: $button-default) {
   // Base Button Style
   @include buttonbase($map-name);
