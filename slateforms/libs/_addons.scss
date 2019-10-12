@@ -81,6 +81,7 @@
     }
 
     &.#{map-deep-get($map-name, 'addons', 'right')} {
+
       [type='submit'],
       span,
       button {
