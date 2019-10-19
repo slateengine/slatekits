@@ -16,7 +16,7 @@
   select,
   textarea {
     display: inline-block;
-    width: auto;
+    width: 100%;
   }
 
   .#{map-deep-get($map-name, 'input-class')} {
