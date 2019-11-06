@@ -55,7 +55,7 @@
     span,
     button {
       grid-area: button;
-      @include button($button-addon);
+      @include button($button-skin);
       white-space: nowrap;
     }
 
