@@ -170,6 +170,7 @@
 /// @author Hash&Salt
 /// @group Layout Helpers
 @mixin gridler($gridler-elm: $gridler-element, $gcbsp: $gridler-column-bottom-spacing, $gsmall: $gridler-sm-c, $gmedium: $gridler-me-c, $glarge: $gridler-lg-c, $g-width: $gutter-width, $c-margin: $container-margin, $gsmbp: $gridler-sm, $gmebp: $gridler-me, $glgbp: $gridler-lg, $gridler-center: $center-containers, $gridler-maxwidth: $center-container-max-width) {
+
   @include container($gridler-maxwidth, $gridler-center, $c-margin);
 
   > .#{$gridler-elm} {

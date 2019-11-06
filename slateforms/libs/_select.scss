@@ -17,7 +17,7 @@
 /// @group Forms
 @mixin select($map-name: $input-skin) {
   select {
-    @include inputstyle;
+    @include inputstyle($map-name);
     border-radius: 0;
     -webkit-appearance: none;
     -moz-appearance: none;

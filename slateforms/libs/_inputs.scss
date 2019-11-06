@@ -20,7 +20,7 @@
   }
 
   .#{map-deep-get($map-name, 'input-class')} {
-    @include inputstyle;
+    @include inputstyle($map-name);
   }
 
   textarea {
@@ -66,6 +66,7 @@
     background-color: transparent;
     outline: none;
     cursor: pointer;
+    padding: rem(4px);
     @include borders(map-deep-get($map-name, 'borders', 'border-width'), map-deep-get($map-name, 'borders', 'border-style'), map-deep-get($map-name, 'borders', 'border-color'));
 
     &:hover {
