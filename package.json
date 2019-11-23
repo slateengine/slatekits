@@ -4,5 +4,13 @@
   "description": "Extensions for the Slate sass framework",
   "main": "_slatekits.scss",
   "author": "Hash&Salt",
-  "license": "MIT"
+  "email": "hello@slateengine.com",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/slateengine/slatekits"
+  },
+  "bugs": {
+    "url": "https://github.com/slateengine/slatekits/issues"
+  }
 }
