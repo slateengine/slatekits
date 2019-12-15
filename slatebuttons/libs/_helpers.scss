@@ -55,7 +55,7 @@
   &:hover {
     // Reactive Text Color
     @include lightness(map-get($map-name, 'hover'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
-
+    text-decoration: none;
     background: map-get($map-name, 'hover');
     @if map-get($map-name, 'use-borders') == true {
       @include borders(map-get($map-name, 'border-width'), map-get($map-name, 'border-style'), map-get($map-name, 'border-hover-color'));
@@ -67,7 +67,7 @@
   &:focus {
     // Reactive Text Color
     @include lightness(map-get($map-name, 'focus'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
-
+    text-decoration: none;
     background: map-get($map-name, 'focus');
     @if map-get($map-name, 'use-borders') == true {
       @include borders(map-get($map-name, 'border-width'), map-get($map-name, 'border-style'), map-get($map-name, 'border-focus-color'));
@@ -79,7 +79,7 @@
   &:active {
     // Reactive Text Color
     @include lightness(map-get($map-name, 'active'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
-
+    text-decoration: none;
     background: map-get($map-name, 'active');
     @if map-get($map-name, 'use-borders') == true {
       @include borders(map-get($map-name, 'border-width'), map-get($map-name, 'border-style'), map-get($map-name, 'border-active-color'));
@@ -91,6 +91,7 @@
   &:disabled {
     // Reactive Text Color
     @include lightness(map-get($map-name, 'active'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+    text-decoration: none;
     background: map-get($map-name, 'disabled');
     @if map-get($map-name, 'use-borders') == true {
       @include borders(map-get($map-name, 'border-width'), map-get($map-name, 'border-style'), map-get($map-name, 'border-disabled-color'));
@@ -130,6 +131,7 @@
     &:hover {
       @include gradient-horizontal(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
       @include lightness(map-get($map-name, 'start-color'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-hover-color'));
       } @else {
@@ -139,8 +141,9 @@
 
     &:focus {
       @include gradient-horizontal(map-get($map-name, 'start-color-focus'), map-get($map-name, 'end-color-focus'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
-      outline: none;
       @include lightness(map-get($map-name, 'start-color'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+      outline: none;
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-focus-color'));
       } @else {
@@ -151,6 +154,7 @@
     &:active {
       @include gradient-horizontal(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
       @include lightness(map-get($map-name, 'start-color'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-active-color'));
       } @else {
@@ -161,6 +165,7 @@
     &:disabled {
       @include gradient-horizontal(map-get($map-name, 'start-color-disabled'), map-get($map-name, 'end-color-disabled'));
       @include lightness(map-get($map-name, 'start-color'), map-get($map-name, 'textlight'), map-get($map-name, 'textdark'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-disabled-color'));
       } @else {
@@ -175,6 +180,7 @@
 
     &:hover {
       @include gradient-vertical(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-hover-color'));
       } @else {
@@ -183,8 +189,9 @@
     }
 
     &:focus {
-      outline: none;
       @include gradient-vertical(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
+      outline: none;
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-focus-color'));
       } @else {
@@ -194,6 +201,7 @@
 
     &:active {
       @include gradient-vertical(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'), map-get($map-name, 'start-pos'), map-get($map-name, 'end-pos'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-active-color'));
       } @else {
@@ -217,6 +225,7 @@
 
     &:hover {
       @include gradient-radial(map-get($map-name, 'start-color-hover'), map-get($map-name, 'end-color-hover'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-hover-color'));
       } @else {
@@ -225,8 +234,9 @@
     }
 
     &:focus {
-      outline: none;
       @include gradient-radial(map-get($map-name, 'start-color-focus'), map-get($map-name, 'end-color-focus'));
+      outline: none;
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-focus-color'));
       } @else {
@@ -236,6 +246,7 @@
 
     &:active {
       @include gradient-radial(map-get($map-name, 'start-color-active'), map-get($map-name, 'end-color-active'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-active-color'));
       } @else {
@@ -245,6 +256,7 @@
 
     &:disabled {
       @include gradient-radial(map-get($map-name, 'start-color-disabled'), map-get($map-name, 'end-color-disabled'));
+      text-decoration: none;
       @if map-get($map-name, 'use-borders') == true {
         @include borders(map-get($map-name, 'border-width'), map-deep-get($map-name, 'border-style'), map-deep-get($map-name, 'border-disabled-color'));
       } @else {
