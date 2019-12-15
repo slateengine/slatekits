@@ -103,6 +103,7 @@ $line-heights: ( alpha: $lineheight-alpha, beta: $lineheight-beta, gamma: $lineh
     font-family: $font-family;
     font-weight: $weight;
     font-style: $style;
+    font-display: swap;
     @if index($formats, eot) {
       src: url('#{$custom-font-path}#{$font-name}.eot');
     }
