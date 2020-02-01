@@ -2,14 +2,13 @@
 // Slate Framework <hello@slateengine.com>
 // ======================================================================
 
-// Grid Config
+// Media Query Config
 // ======================================================================
 
-@import 'config/config-grid';
+@import 'config/config-mq';
 
-// Grid
+// Media Queries
 // ======================================================================
 
-@import 'libs/functions';
+@import 'functions/functions';
 @import 'libs/helpers';
-@import 'libs/layouts';
