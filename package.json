@@ -1,6 +1,6 @@
 {
   "name": "@slateengine/slatesasskits",
-  "version": "8.0.7",
+  "version": "8.0.8",
   "description": "Extensions for the Slate sass framework",
   "main": "_slatekits.scss",
   "author": "Hash&Salt",

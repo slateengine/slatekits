@@ -14,7 +14,7 @@
 /// @param {Variable} $table-skin [$default-table] - SASS map to use for the skin.
 /// @group Tables
 
-@mixin tableelement($table-skin: $default-table, $el) {
+@mixin tableelement($el, $table-skin: $default-table) {
   @include rem(padding, map-deep-get($table-skin, $el, 'padding'));
   @include rem(font-size, map-deep-get($table-skin, $el, 'fontsize'));
   background: map-deep-get($table-skin, $el, 'background');
