@@ -1,6 +1,6 @@
 {
   "name": "@slateengine/slatesasskits",
-  "version": "8.0.8",
+  "version": "8.0.9",
   "description": "Extensions for the Slate sass framework",
   "main": "_slatekits.scss",
   "author": "Hash&Salt",
@@ -13,7 +13,7 @@
   "bugs": {
     "url": "https://github.com/slateengine/slatekits/issues"
   },
-  "scripts" : {
-    "test" : "echo \"Error: no test specified\" && exit 1"
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
   }
 }
