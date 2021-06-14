@@ -6,6 +6,9 @@
 // Typekit Helpers
 // ======================================================================
 
+@use "sass:math";
+
+
 $modular-scale-alpha: type-setting($base-font-size, $type-ratio, $modular-step-alpha);
 $modular-scale-beta: type-setting($base-font-size, $type-ratio, $modular-step-beta);
 $modular-scale-gamma: type-setting($base-font-size, $type-ratio, $modular-step-gamma);
@@ -121,8 +124,10 @@ $line-heights: ( alpha: $lineheight-alpha, beta: $lineheight-beta, gamma: $lineh
 /// @param {number} $zoom - zoom amount
 /// @group Type Kit
 @mixin rem-baseline($zoom: 100%) {
-  font-size: ($zoom / 16px) * $base-font-size;
+  font-size: (math.div($zoom, 16px)) * $base-font-size;
 }
+
+
 
 // unitless line height mixin
 @mixin unitless-line-height($font-size, $line-height: $line-height) {

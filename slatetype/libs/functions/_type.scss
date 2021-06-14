@@ -6,14 +6,16 @@
 // Type Functions
 // ======================================================================
 
+@use "sass:math";
+
 // Type Setting
 // ======================================================================
 @function type-setting($base, $ratio, $level) {
   $scale: $base;
   @if($level < 0) {
-    $scale: $base / $ratio;
+    $scale: math.div($base, $ratio);    
     @while($level < -1) {
-      $scale: $scale / $ratio;
+      $scale: math.div($scale, $ratio);      
       $level: $level + 1;
     }
   } @else {
@@ -44,8 +46,10 @@
 // Unitless lineheight function
 // ======================================================================
 @function unitless-line-height($rem-base, $line-height: $global-line-height) {
-  @return $line-height / $rem-base;
+  @return math.div($line-height, $rem-base);
 }
+
+
 
 // Fontface
 // ======================================================================
