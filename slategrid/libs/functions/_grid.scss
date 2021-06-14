@@ -6,24 +6,26 @@
 // Calculate element width
 @function element-width($column-index, $g-width: $gutter-width) {
   @if $total-width == 100% {
-    $not-rounded-value: (100% + $g-width) / $total-columns * $column-index - $g-width;
+    $not-rounded-value: math.div(round((100% + $g-width), $total-columns)) * $column-index - $g-width;
     $not-rounded-value: $not-rounded-value * 100;
-    $rounded-value: round($not-rounded-value) / 100;
+    $rounded-value: math.div(round($not-rounded-value), 100);
     @return $rounded-value;
   } @else {
-    @return ($total-width + $g-width) / $total-columns * $column-index - $g-width;
+    @return (math.div(($total-width + $g-width), $total-columns)) * $column-index - $g-width;
   }
 }
+
+
 
 // Calculate column width
 @function column-width($g-width: $gutter-width) {
   @if $total-width == 100% {
-    $not-rounded-value: (100% + $g-width) / $total-columns - $g-width;
+    $not-rounded-value: math.div((100% + $g-width), $total-columns) - $g-width;
     $not-rounded-value: $not-rounded-value * 100;
-    $rounded-value: round($not-rounded-value) / 100;
+    $rounded-value: math.div(round($not-rounded-value), 100);
     @return $rounded-value * 1%;
   } @else {
-    @return ($total-width - $g-width * ($total-columns - 1)) / $total-columns;
+    @return math.div(($total-width - $g-width * ($total-columns - 1)), $total-columns);
   }
 }
 

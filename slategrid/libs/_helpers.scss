@@ -5,6 +5,9 @@
 // ======================================================================
 // Slate Grid
 // ======================================================================
+
+@use "sass:math";
+
 // Insipired by:
 // -------------------
 // Profound Grid: http://www.profoundgrid.com/
@@ -131,7 +134,7 @@
 /// @param {Variable} $ggsp [$column-bottom-spacing] - Space under the repeated columns.
 /// @group Grid
 @mixin generate-grid-positions($column-selector, $element-width, $ggsp: $column-bottom-spacing, $g-width: $gutter-width) {
-  $cols-per-row: floor($total-columns / $element-width);
+  $cols-per-row: floor((math.div($total-columns, $element-width)));
   @for $i from 1 through $cols-per-row {
     #{$column-selector}:nth-child(#{$cols-per-row}n+#{$i}) {
       @include push(($i - 1) * $element-width, $g-width);
