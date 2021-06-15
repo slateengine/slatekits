@@ -7,9 +7,10 @@
 // Calculate element width
 @function element-width($column-index, $g-width: $gutter-width) {
   @if $total-width == 100% {
-    $not-rounded-value: math.div(round((100% + $g-width), $total-columns)) * $column-index - $g-width;
+    $r: round(100% + $g-width);
+    $not-rounded-value: math.div($r, $total-columns) * $column-index - $g-width;
     $not-rounded-value: $not-rounded-value * 100;
-    $rounded-value: math.div(round($not-rounded-value), 100);
+    $rounded-value: math.div(math.round($not-rounded-value), 100);
     @return $rounded-value;
   } @else {
     @return (math.div(($total-width + $g-width), $total-columns)) * $column-index - $g-width;
