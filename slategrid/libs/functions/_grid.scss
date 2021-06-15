@@ -2,6 +2,7 @@
 // Slate Grid Functions
 // ======================================================================
 
+@use "sass:math";
 
 // Calculate element width
 @function element-width($column-index, $g-width: $gutter-width) {
