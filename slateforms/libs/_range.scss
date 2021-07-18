@@ -5,6 +5,9 @@
 // ======================================================================
 // Slate Forms: Range Slider
 // ======================================================================
+
+@use "sass:math";
+
 // Based on https://github.com/darlanrod/input-range-scss
 @mixin range-input($map-name: $input-skin) {
   // Thumb Vars
@@ -65,7 +68,9 @@
       box-sizing: border-box;
       width: $thumb-width;
       height: $thumb-height;
-      margin-top: ((-$track-border-width * 2 + $track-height) / 2 - $thumb-height / 2);
+      margin-top: (math.div((-$track-border-width * 2 + $track-height), 2) - math.div($thumb-height, 2));    
+      
+
       cursor: default;
       border-radius: $thumb-radius;
       background: $thumb-color;
@@ -75,7 +80,7 @@
 
     &::-moz-range-track {
       width: $track-width;
-      height: $track-height / 2;
+      height:math.div($track-height, 2);     
       cursor: default;
       transition: all 0.2s ease;
       border-radius: $track-radius;
@@ -99,7 +104,7 @@
       cursor: default;
       transition: all 0.2s ease;
       color: transparent;
-      border-width: ($thumb-height / 2) 0;
+      border-width:  math.div($track-height, 2) 0;
       border-color: transparent;
       background: transparent;
     }
@@ -111,7 +116,7 @@
     }
 
     &::-ms-fill-upper {
-      border-radius: ($track-radius * 2);
+      border-radius: ($track-radius * 2); 
       background: $track-color;
       @include borders($track-border-width, $track-border-style, $track-border-color);
     }
@@ -120,7 +125,7 @@
       box-sizing: border-box;
       width: $thumb-width;
       height: $thumb-height;
-      margin-top: $track-height / 4;
+      margin-top: math.div($track-height, 4); 
       cursor: default;
       border-radius: $thumb-radius;
       background: $thumb-color;
