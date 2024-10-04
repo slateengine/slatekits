@@ -11,9 +11,9 @@ $button-default: (
   use-borders: true,
 
   default: $primary,
-  hover: darken($primary, 15%),
-  focus: darken($primary, 20%),
-  active: darken($primary, 10%),
+  hover: color.adjust($primary, $lightness: -15%),
+  focus: color.adjust($primary, $lightness: -20%),
+  active: color.adjust($primary, $lightness: -10%),
   disabled: $disabled,
 
   font-family: inherit,
@@ -29,7 +29,7 @@ $button-default: (
   border-color: $gray,
   border-hover-color: $dark,
   border-focus-color: $dark,
-  border-disabled-color: darken($disabled, 20%),
+  border-disabled-color: color.adjust($disabled, $lightness: -20%),
 
   height: 44px,
   margin: 0 0 24px 0,
@@ -65,7 +65,7 @@ $button-addon: (
   border-color: $gray,
   border-hover-color: $dark,
   border-focus-color: $dark,
-  border-disabled-color: darken($disabled, 20%),
+  border-disabled-color: color.adjust($disabled, $lightness: -20%),
 
   height: 44px,
   margin: 0 0 0 0,
@@ -83,9 +83,9 @@ $button-positive: (
   use-borders: true,
 
   default: $positive,
-  hover: darken($positive, 15%),
-  focus: darken($positive, 20%),
-  active: darken($positive, 10%),
+  hover: color.adjust($positive, $lightness: -15%),
+  focus: color.adjust($positive, $lightness: -20%),
+  active: color.adjust($positive, $lightness: -10%),
   disabled: $disabled,
 
   font-family: inherit,
@@ -99,10 +99,10 @@ $button-positive: (
   border-width: 2px 2px 2px 2px,
   border-style: solid,
 
-  border-color: darken($positive, 10%),
-  border-hover-color: darken($positive, 15%),
+  border-color: color.adjust($positive, $lightness: -10%),
+  border-hover-color: color.adjust($positive, $lightness: -15%),
   border-focus-color: $dark,
-  border-disabled-color: darken($disabled, 20%),
+  border-disabled-color: color.adjust($disabled, $lightness: -20%),
 
   height: 44px,
   margin: 0 0 24px 0,
@@ -112,7 +112,7 @@ $button-positive: (
   display: inline-block,
   boxsizing: content-box
 
-);
+) !default;
 
 /// Negative Button Theme
 $button-negative: (
@@ -120,9 +120,9 @@ $button-negative: (
   use-borders: true,
 
   default: $negative,
-  hover: darken($negative, 15%),
-  focus: darken($negative, 20%),
-  active: darken($negative, 10%),
+  hover: color.adjust($negative, $lightness: -15%),
+  focus: color.adjust($negative, $lightness: -20%),
+  active: color.adjust($negative, $lightness: -10%),
   disabled: $disabled,
 
   font-family: inherit,
@@ -137,10 +137,10 @@ $button-negative: (
   border-width: 2px 2px 2px 2px,
   border-style: solid,
 
-  border-color: darken($negative, 10%),
-  border-hover-color: darken($negative, 15%),
+  border-color: color.adjust($negative, $lightness: -10%),
+  border-hover-color: color.adjust($negative, $lightness: -15%),
   border-focus-color: $dark,
-  border-disabled-color: darken($disabled, 20%),
+  border-disabled-color: color.adjust($disabled, $lightness: -20%),
 
   height: 44px,
   margin: 0 0 24px 0,
@@ -150,7 +150,7 @@ $button-negative: (
   display: inline-block,
   boxsizing: content-box
 
-);
+  ) !default;
 
 /// Gradient Button Theme
 $button-gradient: (
@@ -179,28 +179,29 @@ $button-gradient: (
 
     default: $gradient-start,
 
-    /// Default Colors
+    // Default Colors
     start-color: $gradient-start,
     end-color: $gradient-end,
-    /// Hover Colors
+    // Hover Colors
     start-color-hover: $gradient-start,
-    end-color-hover: darken($gradient-end, 10%),
-    /// Focus Colors
+    end-color-hover: color.adjust($gradient-end, $lightness: -10%),
+    // Focus Colors
     start-color-focus: $gradient-start,
-    end-color-focus: darken($gradient-end, 10%),
-    /// Active Colors
+    end-color-focus: color.adjust($gradient-end, $lightness: -10%),
+    // Active Colors
     start-color-active: $gradient-start,
-    end-color-active: darken($gradient-end, 10%),
-    /// Disabled Colors
+    end-color-active: color.adjust($gradient-end, $lightness: -10%),
+    // Disabled Colors
     start-color-disabled: $disabled,
-    end-color-disabled: darken($disabled, 30%),
+    end-color-disabled: color.adjust($gradient-end, $lightness: -30%),
 
     border-width: 2px 2px 2px 2px,
     border-style: solid,
-    border-color: darken($gradient-start, 10%),
+    border-color: color.adjust($gradient-start, $lightness: -10%),
     border-hover-color: $dark,
     border-active-color: $dark,
     border-focus-color: $dark,
-    border-disabled-color: darken($disabled, 20%),
+    border-disabled-color: color.adjust($disabled, $lightness: -20%),
+
 
 ) !default;
